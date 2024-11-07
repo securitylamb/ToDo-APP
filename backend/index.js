@@ -5,7 +5,9 @@ const app = express();
 const port = 3000;
 const {create_todos} = require('./types');
 const { todo } = require('./db');
+const cors = require('cors');
 app.use(express.json());
+app.use(cors());
 
 app.get('/todos', async (req, res) => {
     // this will give everything 
@@ -19,7 +21,7 @@ app.post('/todo', async (req, res) => {
     const createPayload = req.body;
     const parsedPayload = create_todos.safeParse(createPayload);
 
-    if (!validationResult.success) {
+    if (!parsedPayload.success) {
         res.status(411).json({
             msg:"you send the wrong input"
         })
@@ -42,7 +44,7 @@ app.post('/todo', async (req, res) => {
 app.put('/completed', (req, res) => {
     const createPayload = req.body;
     const parsedPayload = update_todos.safeParse(createPayload);
-    if (!validationResult.success) {
+    if (!parsedPayload.success) {
         res.status(411).json({
             msg:"you send the wrong input"
         })

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 // .then(() => console.log('MongoDB connected'))
 // .catch((error) => console.error('Connection error line 6:', error));
 
-mongoose.connect('mongodb://vrishab:vrishab@123@cluster0.ymycu.mongodb.net/')
+mongoose.connect('mongodb+srv://kirags123:8qPEa8KTKBEh2bss@cluster0.f3qlbuo.mongodb.net/todos')
 .then(() => console.log('MongoDB connected'))
 .catch((error) => console.error('Connection error line 6:', error));
 
